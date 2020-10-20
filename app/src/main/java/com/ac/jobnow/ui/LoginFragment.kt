@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
@@ -30,6 +31,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun setupUI() {
+        handleDot()
+    }
+
+    private fun handleDot() {
         dotEnlarge()
         dotDisappear()
     }
@@ -54,14 +59,19 @@ class LoginFragment : Fragment() {
             startDelay = 300
             duration = 700
             start()
-        }.doOnStart {
-            loginBinding?.clFragment?.setBackgroundColor(
-                ResourcesCompat.getColor(
-                    resources,
-                    R.color.white,
-                    activity?.theme
+        }.apply {
+            doOnStart {
+                loginBinding?.clFragment?.setBackgroundColor(
+                    ResourcesCompat.getColor(
+                        resources,
+                        R.color.white,
+                        activity?.theme
+                    )
                 )
-            )
+            }
+            doOnEnd {
+                loginBinding?.dotLogo?.visibility = View.GONE
+            }
         }
     }
 }
