@@ -2,7 +2,6 @@ package com.ac.jobnow
 
 object AnimationConstants {
     const val SCALE_MAX = 100F
-    const val GO_LEFT = -1300F
     const val GO_RIGHT = 1000F
     const val RETURN = 1F
     const val START_DELAY_SPLASHSCREEN = 600L

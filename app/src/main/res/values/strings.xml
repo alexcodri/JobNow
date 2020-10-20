@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JobNow</string>
+    <string name="login_placeholder">Email address</string>
+    <string name="password_placeholder">Password</string>
 </resources>
