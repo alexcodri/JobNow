@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.ac.jobnow.AnimationConstants
 import com.ac.jobnow.R
 import com.ac.jobnow.databinding.FragmentSplashscreenBinding
+import com.ac.jobnow.extensions.animateComponent
 
 class SplashscreenFragment : Fragment() {
 
@@ -30,64 +32,41 @@ class SplashscreenFragment : Fragment() {
     }
 
     private fun setupUI() {
-        setupJobAnimation()
+        dotLogoAnimations()
     }
 
-    private fun setupJobAnimation() {
-        jobLogoAnimations()
-        nowLogoAnimations()
-    }
-
-    private fun jobLogoAnimations() {
-        animationJobGoLeft()
-        animationJobGoRight()
-    }
-
-    private fun nowLogoAnimations() {
-        animationDotGoRight()
-        animationDotGoLeft()
-        animationDotEnlarge()
-    }
-
-    private fun animationJobGoLeft() {
-        ObjectAnimator.ofFloat(binding.jobLogo, "translationX", -1300f).apply {
-            duration = 100
-            start()
+    private fun dotLogoAnimations() {
+        binding.dotLogo.apply {
+            animateComponent(
+                "translationX",
+                AnimationConstants.GO_RIGHT,
+                View.INVISIBLE,
+                0,
+                AnimationConstants.DURATION_JOB_NOW_LOGO_LEFT
+            )
+            animateComponent(
+                "translationX",
+                AnimationConstants.RETURN,
+                View.VISIBLE,
+                AnimationConstants.START_DELAY_SPLASHSCREEN,
+                AnimationConstants.DURATION_LONG
+            )
+            animateComponent(
+                "scaleX",
+                AnimationConstants.SCALE_MAX,
+                View.VISIBLE,
+                AnimationConstants.START_DELAY_DOT_ENLARGE,
+                AnimationConstants.DURATION_DOT
+            )
+            animationDotEnlarge()
         }
     }
 
-    private fun animationJobGoRight() {
-        ObjectAnimator.ofFloat(binding.jobLogo, "translationX", 1F).apply {
-            startDelay = 600
-            duration = 1000
-            start()
-        }
-    }
-
-    private fun animationDotGoRight() {
-        ObjectAnimator.ofFloat(binding.dotLogo, "translationX", 1000f).apply {
-            duration = 100
-            start()
-        }
-    }
-
-    private fun animationDotGoLeft() {
-        ObjectAnimator.ofFloat(binding.dotLogo, "translationX", 1F).apply {
-            startDelay = 600
-            duration = 1000
-            start()
-        }
-    }
 
     private fun animationDotEnlarge() {
-        ObjectAnimator.ofFloat(binding.dotLogo, "scaleX", 100F).apply {
-            startDelay = 1900
-            duration = 300
-            start()
-        }
-        ObjectAnimator.ofFloat(binding.dotLogo, "scaleY", 100F).apply {
-            startDelay = 1900
-            duration = 300
+        ObjectAnimator.ofFloat(binding.dotLogo, "scaleY", AnimationConstants.SCALE_MAX).apply {
+            startDelay = AnimationConstants.START_DELAY_DOT_ENLARGE
+            duration = AnimationConstants.DURATION_DOT
             start()
         }.doOnEnd {
             navigateToLogin()
