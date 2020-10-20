@@ -9,5 +9,14 @@
         android:id="@+id/splashscreenFragment"
         android:name="com.ac.jobnow.ui.splashscreen.SplashscreenFragment"
         android:label="fragment_splashscreen"
-        tools:layout="@layout/fragment_splashscreen" />
+        tools:layout="@layout/fragment_splashscreen">
+        <action
+            android:id="@+id/action_splashscreenFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.ac.jobnow.ui.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>
