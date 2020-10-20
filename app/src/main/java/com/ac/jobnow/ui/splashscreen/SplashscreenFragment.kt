@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.ac.jobnow.AnimationConstants
 import com.ac.jobnow.R
 import com.ac.jobnow.databinding.FragmentSplashscreenBinding
 
@@ -50,44 +51,44 @@ class SplashscreenFragment : Fragment() {
     }
 
     private fun animationJobGoLeft() {
-        ObjectAnimator.ofFloat(binding.jobLogo, "translationX", -1300f).apply {
-            duration = 100
+        ObjectAnimator.ofFloat(binding.jobLogo, "translationX", AnimationConstants.GO_LEFT).apply {
+            duration = AnimationConstants.DURATION_JOB_NOW_LOGO_LEFT
             start()
         }
     }
 
     private fun animationJobGoRight() {
-        ObjectAnimator.ofFloat(binding.jobLogo, "translationX", 1F).apply {
-            startDelay = 600
-            duration = 1000
+        ObjectAnimator.ofFloat(binding.jobLogo, "translationX", AnimationConstants.RETURN).apply {
+            startDelay = AnimationConstants.START_DELAY_SPLASHSCREEN
+            duration = AnimationConstants.DURATION_LONG
             start()
         }
     }
 
     private fun animationDotGoRight() {
-        ObjectAnimator.ofFloat(binding.dotLogo, "translationX", 1000f).apply {
-            duration = 100
+        ObjectAnimator.ofFloat(binding.dotLogo, "translationX", AnimationConstants.GO_RIGHT).apply {
+            duration = AnimationConstants.DURATION_JOB_NOW_LOGO_LEFT
             start()
         }
     }
 
     private fun animationDotGoLeft() {
-        ObjectAnimator.ofFloat(binding.dotLogo, "translationX", 1F).apply {
-            startDelay = 600
-            duration = 1000
+        ObjectAnimator.ofFloat(binding.dotLogo, "translationX", AnimationConstants.RETURN).apply {
+            startDelay = AnimationConstants.START_DELAY_SPLASHSCREEN
+            duration = AnimationConstants.DURATION_LONG
             start()
         }
     }
 
     private fun animationDotEnlarge() {
-        ObjectAnimator.ofFloat(binding.dotLogo, "scaleX", 100F).apply {
-            startDelay = 1900
-            duration = 300
+        ObjectAnimator.ofFloat(binding.dotLogo, "scaleX", AnimationConstants.SCALE_MAX).apply {
+            startDelay = AnimationConstants.START_DELAY_DOT_ENLARGE
+            duration = AnimationConstants.DURATION_DOT
             start()
         }
-        ObjectAnimator.ofFloat(binding.dotLogo, "scaleY", 100F).apply {
-            startDelay = 1900
-            duration = 300
+        ObjectAnimator.ofFloat(binding.dotLogo, "scaleY", AnimationConstants.SCALE_MAX).apply {
+            startDelay = AnimationConstants.START_DELAY_DOT_ENLARGE
+            duration = AnimationConstants.DURATION_DOT
             start()
         }.doOnEnd {
             navigateToLogin()

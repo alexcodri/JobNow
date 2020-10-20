@@ -9,6 +9,7 @@ import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import com.ac.jobnow.AnimationConstants
 import com.ac.jobnow.R
 import com.ac.jobnow.databinding.FragmentLoginBinding
 
@@ -40,24 +41,24 @@ class LoginFragment : Fragment() {
     }
 
     private fun dotEnlarge() {
-        ObjectAnimator.ofFloat(binding.dotLogo, "scaleX", 100F).apply {
+        ObjectAnimator.ofFloat(binding.dotLogo, "scaleX", AnimationConstants.SCALE_MAX).apply {
             start()
         }
 
-        ObjectAnimator.ofFloat(binding.dotLogo, "scaleY", 100F).apply {
+        ObjectAnimator.ofFloat(binding.dotLogo, "scaleY", AnimationConstants.SCALE_MAX).apply {
             start()
         }
     }
 
     private fun dotDisappear() {
-        ObjectAnimator.ofFloat(binding.dotLogo, "scaleX", 0F).apply {
-            startDelay = 300
-            duration = 700
+        ObjectAnimator.ofFloat(binding.dotLogo, "scaleX", AnimationConstants.SIZE_DISAPPEAR).apply {
+            startDelay = AnimationConstants.DURATION_DOT
+            duration = AnimationConstants.DURATION_DOT_DISAPPEAR
             start()
         }
-        ObjectAnimator.ofFloat(binding.dotLogo, "scaleY", 0F).apply {
-            startDelay = 300
-            duration = 700
+        ObjectAnimator.ofFloat(binding.dotLogo, "scaleY", AnimationConstants.SIZE_DISAPPEAR).apply {
+            startDelay = AnimationConstants.DURATION_DOT
+            duration = AnimationConstants.DURATION_DOT_DISAPPEAR
             start()
         }.apply {
             doOnStart {
