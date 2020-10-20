@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.ac.jobnow.AnimationConstants
 import com.ac.jobnow.R
 import com.ac.jobnow.databinding.FragmentLoginBinding
+import com.ac.jobnow.extensions.animateComponent
 
 class LoginFragment : Fragment() {
 
@@ -32,30 +33,49 @@ class LoginFragment : Fragment() {
     }
 
     private fun setupUI() {
-        handleDot()
+        handleDotAnimation()
+        handleEmailETAnimation()
+        handlePasswordETAnimation()
     }
 
-    private fun handleDot() {
-        dotEnlarge()
-        dotDisappear()
+    private fun handleEmailETAnimation() {
+        binding.tilLogin.apply {
+            animateComponent("scaleX")
+            animateComponent("scaleX", 1F, View.VISIBLE, 700, 300)
+            animateComponent("scaleY")
+            animateComponent("scaleY", 1F, View.VISIBLE, 700, 300)
+            animateComponent("translationY", -550F, View.VISIBLE, 700, 300)
+        }
     }
 
-    private fun dotEnlarge() {
-        ObjectAnimator.ofFloat(binding.dotLogo, "scaleX", AnimationConstants.SCALE_MAX).apply {
-            start()
+
+    private fun handlePasswordETAnimation() {
+        binding.tilPassword.apply {
+            animateComponent("scaleX")
+            animateComponent("scaleX", 1F, View.VISIBLE, 700, 300)
+            animateComponent("scaleY")
+            animateComponent("scaleY", 1F, View.VISIBLE, 700, 300)
+            animateComponent("translationY", -250F, View.VISIBLE, 700, 300)
         }
 
-        ObjectAnimator.ofFloat(binding.dotLogo, "scaleY", AnimationConstants.SCALE_MAX).apply {
-            start()
+    }
+
+    private fun handleDotAnimation() {
+        binding.dotLogo.apply {
+            animateComponent("scaleX", AnimationConstants.SCALE_MAX)
+            animateComponent("scaleY", AnimationConstants.SCALE_MAX)
+            animateComponent(
+                "scaleX",
+                AnimationConstants.SIZE_DISAPPEAR,
+                View.VISIBLE,
+                AnimationConstants.DURATION_DOT,
+                AnimationConstants.DURATION_DOT_DISAPPEAR
+            )
+            dotDisappear()
         }
     }
 
     private fun dotDisappear() {
-        ObjectAnimator.ofFloat(binding.dotLogo, "scaleX", AnimationConstants.SIZE_DISAPPEAR).apply {
-            startDelay = AnimationConstants.DURATION_DOT
-            duration = AnimationConstants.DURATION_DOT_DISAPPEAR
-            start()
-        }
         ObjectAnimator.ofFloat(binding.dotLogo, "scaleY", AnimationConstants.SIZE_DISAPPEAR).apply {
             startDelay = AnimationConstants.DURATION_DOT
             duration = AnimationConstants.DURATION_DOT_DISAPPEAR
