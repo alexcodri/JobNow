@@ -38,3 +38,7 @@ object RegexConstants {
         "^(?=.*[a-z])(?=.*[A-Z])(?=.*[[^\\w\\s]])(?=\\S+\$).{8,30}$"
     )
 }
+
+object NetworkConstants {
+    const val BASE_URI = "http://joblistings.run-eu-central1.goorm.io/"
+}
