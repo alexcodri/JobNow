@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/jobnow_accent"
-    tools:context=".ui.LoginFragment">
+    tools:context=".ui.login.LoginFragment">
 
     <ImageView
         android:id="@+id/dot_logo"
@@ -18,18 +18,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/job_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/job_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_login"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:layout_margin="30dp"
         android:background="@drawable/bg_edit_text"
         android:hint="@string/login_placeholder"
-        android:padding="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="8dp"
         android:textColorHint="@color/jobnow_accent"
         android:visibility="invisible"
         app:hintTextColor="@color/jobnow_accent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -49,22 +61,36 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/tv_email_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="32dp"
+        android:text="@string/please_enter_a_valid_mail"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_password"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:layout_margin="30dp"
         android:background="@drawable/bg_edit_text"
         android:hint="@string/password_placeholder"
-        android:padding="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="7dp"
         android:textColorHint="@color/jobnow_accent"
         android:visibility="invisible"
         app:hintTextColor="@color/jobnow_accent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/jobnow_accent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_password"
@@ -80,14 +106,40 @@
             android:textColorHint="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/btn_login"
+    <TextView
+        android:id="@+id/tv_password_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:text="@string/password_error"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.ac.jobnow.ui.views.custom.CustomBlueButton
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/jobnow_accent"
+        android:text="@string/login_text"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.ac.jobnow.ui.views.custom.CustomBlueButton
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="@string/don_t_have_an_account"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
