@@ -13,6 +13,11 @@ object AnimationConstants {
     const val START_DELAY_DOT_ENLARGE = 1900L
     const val SIZE_DISAPPEAR = 0F
     const val DURATION_DOT_DISAPPEAR = 500L
+    const val LOADING_SCREEN_TRANSLATE_DURATION = 400L
+    const val LOADING_SCREEN_DELAY = 400L
+    const val LOADING_SCREEN_ADD_COLOR_DURATION = 250
+    const val LOADING_SCREEN_REMOVE_COLOR_DURATION = 150
+    const val LOADING_TRANSLATION_Y = 40
 }
 
 object ButtonConstants {
@@ -20,6 +25,11 @@ object ButtonConstants {
     const val WIDTH_PERCENTAGE = 85
     const val TEXT_SIZE = 19f
     const val PADDING = 5
+}
+
+object ViewConstants {
+    const val LOADING_DIALOG_WIDTH = 36
+    const val LOADING_DIALOG_TEXT = "loadingText"
 }
 
 object RegexConstants {

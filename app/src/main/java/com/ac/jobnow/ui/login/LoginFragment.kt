@@ -5,23 +5,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.ac.jobnow.R
 import com.ac.jobnow.databinding.FragmentLoginBinding
+import com.ac.jobnow.repository.model.LoginRequest
 import com.ac.jobnow.utils.AnimationConstants
 import com.ac.jobnow.utils.RegexConstants
-import com.ac.jobnow.utils.extensions.animateComponent
-import com.ac.jobnow.utils.extensions.changeBackground
-import com.ac.jobnow.utils.extensions.checkInput
+import com.ac.jobnow.utils.extensions.*
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private var loginBinding: FragmentLoginBinding? = null
     private val binding get() = loginBinding!!
+    private val loginFragmentViewModel by activityViewModels<LoginFragmentViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +40,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
         goToRegister()
+        loginUser()
     }
 
     private fun setupUI() {
@@ -97,7 +103,7 @@ class LoginFragment : Fragment() {
             animateComponent("scaleX", 1F, View.VISIBLE, 700, 300)
             animateComponent("scaleY")
             animateComponent("scaleY", 1F, View.VISIBLE, 700, 300)
-            animateComponent("translationY", 350F, View.VISIBLE, 700, 300)
+            animateComponent("translationY", 400F, View.VISIBLE, 700, 300)
         }
     }
 
@@ -107,7 +113,7 @@ class LoginFragment : Fragment() {
             animateComponent("scaleX", 1F, View.INVISIBLE, 700, 300)
             animateComponent("scaleY")
             animateComponent("scaleY", 1F, View.INVISIBLE, 700, 300)
-            animateComponent("translationY", 550F, View.INVISIBLE, 700, 300)
+            animateComponent("translationY", 600F, View.INVISIBLE, 700, 300)
         }
     }
 
@@ -205,9 +211,39 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun goToLogin() {
+    private fun loginUser() {
         binding.btnLogin.setOnClickListener {
+            toggleProgressDialog(true)
+            loginFragmentViewModel.apply {
+                login(
+                    LoginRequest(
+                        binding.etLogin.text.toString(),
+                        binding.etPassword.text.toString()
+                    )
+                )
+                loginResult.observe(viewLifecycleOwner) {
+                    toggleProgressDialog(it.isUserFound)
+                    if (it.isUserFound) {
+                        Toast.makeText(context, "Login!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "Wrong credentials or the account does not exist!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        }
+    }
 
+    private fun toggleProgressDialog(show: Boolean) {
+        activity?.runOnUiThread {
+            if (show) {
+                showLoadingAnimation()
+            } else {
+                endLoginLoadingAnimation()
+            }
         }
     }
 }
