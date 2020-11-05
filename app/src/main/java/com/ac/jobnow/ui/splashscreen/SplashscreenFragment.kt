@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.ac.jobnow.AnimationConstants
+import com.ac.jobnow.utils.AnimationConstants
 import com.ac.jobnow.R
 import com.ac.jobnow.databinding.FragmentSplashscreenBinding
-import com.ac.jobnow.extensions.animateComponent
+import com.ac.jobnow.utils.extensions.animateComponent
 
 class SplashscreenFragment : Fragment() {
 
