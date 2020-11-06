@@ -2,6 +2,7 @@ package com.ac.jobnow.ui.login
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -103,7 +104,7 @@ class LoginFragment : Fragment() {
             animateComponent("scaleX", 1F, View.VISIBLE, 700, 300)
             animateComponent("scaleY")
             animateComponent("scaleY", 1F, View.VISIBLE, 700, 300)
-            animateComponent("translationY", 400F, View.VISIBLE, 700, 300)
+            animateComponent("translationY", 450F, View.VISIBLE, 700, 300)
         }
     }
 
@@ -113,7 +114,7 @@ class LoginFragment : Fragment() {
             animateComponent("scaleX", 1F, View.INVISIBLE, 700, 300)
             animateComponent("scaleY")
             animateComponent("scaleY", 1F, View.INVISIBLE, 700, 300)
-            animateComponent("translationY", 600F, View.INVISIBLE, 700, 300)
+            animateComponent("translationY", 650F, View.INVISIBLE, 700, 300)
         }
     }
 
@@ -178,7 +179,7 @@ class LoginFragment : Fragment() {
     private fun handleEmailInput() {
         binding.apply {
             etLogin.setOnFocusChangeListener { _, _ ->
-                if (!etLogin.checkInput(RegexConstants.emailPattern)) {
+                if (etLogin.text?.length!! > 3 && !etLogin.checkInput(RegexConstants.emailPattern)) {
                     tilLogin.changeBackground(R.drawable.bg_custom_error)
                     tvEmailError.visibility = View.VISIBLE
                 } else {
@@ -192,7 +193,7 @@ class LoginFragment : Fragment() {
     private fun handlePasswordInput() {
         binding.apply {
             etPassword.setOnFocusChangeListener { _, _ ->
-                if (!etPassword.checkInput(RegexConstants.passwordPattern)) {
+                if (etPassword.text?.length!! > 3 && !etPassword.checkInput(RegexConstants.passwordPattern)) {
                     tilPassword.changeBackground(R.drawable.bg_custom_error)
                     tvPasswordError.visibility = View.VISIBLE
                 } else {
@@ -221,18 +222,20 @@ class LoginFragment : Fragment() {
                         binding.etPassword.text.toString()
                     )
                 )
-                loginResult.observe(viewLifecycleOwner) {
-                    toggleProgressDialog(it.isUserFound)
+                loginResult.observe(viewLifecycleOwner, {
+                    Log.println(Log.ERROR, "plt", it.isUserFound.toString())
                     if (it.isUserFound) {
-                        Toast.makeText(context, "Login!", Toast.LENGTH_SHORT).show()
+                        toggleProgressDialog(false)
+                        findNavController().navigate(R.id.dashboardFragment)
                     } else {
+                        toggleProgressDialog(false)
                         Toast.makeText(
                             context,
                             "Wrong credentials or the account does not exist!",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-                }
+                })
             }
         }
     }
