@@ -10,5 +10,21 @@
     <!--  See applied to jobs  -->
     <!--    See all users-->
 
+    <RelativeLayout
+        android:id="@+id/rl_toolbar_dashboard"
+        android:layout_width="match_parent"
+        android:gravity="end"
+        android:layout_height="match_parent">
 
+        <com.ac.jobnow.ui.views.custom.CustomBlueButton
+            android:id="@+id/btn_see_jobs"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:text="@string/see_applied_jobs"
+            android:textAllCaps="false"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/jobnow_accent"
+            android:textColor="@color/textWhiteColor"
+            />
+    </RelativeLayout>
 </androidx.appcompat.widget.Toolbar>

@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_jobDetailsFragment"
             app:destination="@id/jobDetailsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_appliedToJobsFragment"
+            app:destination="@id/appliedToJobsFragment" />
     </fragment>
     <fragment
         android:id="@+id/jobDetailsFragment"
@@ -60,4 +63,9 @@
             android:name="job"
             app:argType="com.ac.jobnow.repository.model.jobModels.Job" />
     </fragment>
+    <fragment
+        android:id="@+id/appliedToJobsFragment"
+        android:name="com.ac.jobnow.ui.appliedToJobs.AppliedToJobsFragment"
+        android:label="applied_to_jobs_fragment"
+        tools:layout="@layout/applied_to_jobs_fragment" />
 </navigation>
