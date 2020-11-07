@@ -2,6 +2,7 @@ package com.ac.jobnow.utils.extensions
 
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +10,14 @@ import android.view.Window
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.core.animation.doOnStart
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.setMargins
 import com.ac.jobnow.R
+import com.google.android.flexbox.FlexboxLayout
 
 fun View.animateComponent(
     propertyName: String,
@@ -84,4 +89,35 @@ fun Window.setSquareLayout(widthPercentage: Int = -1, heightPercentage: Int = -1
         else
             this.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
     } ?: this.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+}
+
+
+fun FlexboxLayout.addSkillTextViews(skill: String) {
+    val skillTextView = TextView(context)
+    skillTextView.layoutParams = LinearLayout
+        .LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+    (skillTextView.layoutParams as LinearLayout.LayoutParams)
+        .setMargins(25, 0, 0, 40)
+
+    skillTextView.background = getFromDrawable(context, R.color.tv_job_skills_color)
+    skillTextView.setPadding(20, 20, 20, 20)
+    skillTextView.text = skill
+    context?.let { ContextCompat.getColor(it, R.color.textWhiteColor) }?.let {
+        skillTextView.setTextColor(
+            it
+        )
+    }
+    skillTextView.textSize = 16F
+    this.addView(skillTextView)
+}
+
+fun getFromDrawable(context: Context?, resourceId: Int): Drawable? {
+    return context?.let { ActivityCompat.getDrawable(it, resourceId) }
+}
+
+fun getBackgroundFromDrawable(context: Context?, resourceId: Int): Drawable? {
+    return context?.let { ActivityCompat.getDrawable(it, resourceId) }
 }
