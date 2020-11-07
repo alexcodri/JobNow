@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.ac.jobnow.repository.model.LoginRequest
-import com.ac.jobnow.repository.model.LoginResponse
+import com.ac.jobnow.repository.model.loginModels.LoginRequest
+import com.ac.jobnow.repository.model.loginModels.LoginResponse
 import com.ac.jobnow.repository.network.requests.LoginService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
