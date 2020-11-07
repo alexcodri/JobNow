@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ac.jobnow.R
 import com.ac.jobnow.databinding.DashboardFragmentBinding
 import com.ac.jobnow.repository.model.jobModels.Job
 import com.ac.jobnow.ui.dashboard.adapter.DashboardApplicantAdapter
@@ -33,6 +34,7 @@ class DashboardFragment : Fragment(), OnJobItemClick {
         super.onViewCreated(view, savedInstanceState)
         loadRecyclerView()
         updateRecyclerViewData()
+        goToAppliedJobs()
     }
 
     private fun updateRecyclerViewData() {
@@ -77,5 +79,11 @@ class DashboardFragment : Fragment(), OnJobItemClick {
         val action =
             DashboardFragmentDirections.actionDashboardFragmentToJobDetailsFragment(jobs[position])
         findNavController().navigate(action)
+    }
+
+    private fun goToAppliedJobs() {
+        binding.tbDashboard.btnSeeJobs.setOnClickListener {
+            findNavController().navigate(R.id.action_dashboardFragment_to_appliedToJobsFragment)
+        }
     }
 }

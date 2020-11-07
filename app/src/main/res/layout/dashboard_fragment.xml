@@ -6,12 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
+    <include
+        android:id="@+id/tb_dashboard"
+        layout="@layout/toolbar_dashboard"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_dashboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tb_dashboard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
