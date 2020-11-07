@@ -16,7 +16,7 @@ fun Fragment.showLoadingAnimation(text: String = resources.getString(R.string.de
         })
 }
 
-fun Fragment.endLoginLoadingAnimation() {
-    findNavController().navigate(R.id.loginFragment)
+fun Fragment.endLoginLoadingAnimation(id: Int) {
+    findNavController().navigate(id)
     findNavController().popBackStack()
 }

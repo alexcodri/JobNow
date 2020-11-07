@@ -1,4 +1,4 @@
-package com.ac.jobnow.repository.model
+package com.ac.jobnow.repository.model.registerModels
 
 data class User(
     val email: String,
@@ -7,5 +7,6 @@ data class User(
     val surname: String,
     val currentPosition: String,
     val company: String,
-    val skills: List<String>
+    val skills: List<String>,
+    val isRecruiter: Boolean
 )

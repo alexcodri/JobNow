@@ -1,6 +1,7 @@
 package com.ac.jobnow.ui.splashscreen
 
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +9,9 @@ import android.view.ViewGroup
 import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.ac.jobnow.utils.AnimationConstants
 import com.ac.jobnow.R
 import com.ac.jobnow.databinding.FragmentSplashscreenBinding
+import com.ac.jobnow.utils.AnimationConstants
 import com.ac.jobnow.utils.extensions.animateComponent
 
 class SplashscreenFragment : Fragment() {
@@ -69,11 +70,20 @@ class SplashscreenFragment : Fragment() {
             duration = AnimationConstants.DURATION_DOT
             start()
         }.doOnEnd {
-            navigateToLogin()
+            val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+            if (sharedPref?.getBoolean("isLoggedIn", false) == true) {
+                navigateToDashboard()
+            } else {
+                navigateToLogin()
+            }
         }
     }
 
     private fun navigateToLogin() {
         findNavController().navigate(R.id.action_splashscreenFragment_to_loginFragment)
+    }
+
+    private fun navigateToDashboard() {
+        findNavController().navigate(R.id.action_splashscreenFragment_to_dashboardFragment)
     }
 }

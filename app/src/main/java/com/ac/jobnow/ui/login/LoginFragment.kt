@@ -1,14 +1,15 @@
 package com.ac.jobnow.ui.login
 
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
+import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -16,7 +17,7 @@ import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.ac.jobnow.R
 import com.ac.jobnow.databinding.FragmentLoginBinding
-import com.ac.jobnow.repository.model.LoginRequest
+import com.ac.jobnow.repository.model.loginModels.LoginRequest
 import com.ac.jobnow.utils.AnimationConstants
 import com.ac.jobnow.utils.RegexConstants
 import com.ac.jobnow.utils.extensions.*
@@ -223,9 +224,14 @@ class LoginFragment : Fragment() {
                     )
                 )
                 loginResult.observe(viewLifecycleOwner, {
-                    Log.println(Log.ERROR, "plt", it.isUserFound.toString())
                     if (it.isUserFound) {
                         toggleProgressDialog(false)
+                        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+                        sharedPref?.edit {
+                            putBoolean("isLoggedIn", it.isUserFound)
+                            putBoolean("isRecruiter", it.isUserRecruiter)
+                            apply()
+                        }
                         findNavController().navigate(R.id.dashboardFragment)
                     } else {
                         toggleProgressDialog(false)
@@ -245,7 +251,7 @@ class LoginFragment : Fragment() {
             if (show) {
                 showLoadingAnimation()
             } else {
-                endLoginLoadingAnimation()
+                endLoginLoadingAnimation(R.id.loginFragment)
             }
         }
     }

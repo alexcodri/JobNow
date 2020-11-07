@@ -1,6 +1,6 @@
 package com.ac.jobnow.repository.network.requests
 
-import com.ac.jobnow.repository.model.LoginResponse
+import com.ac.jobnow.repository.model.loginModels.LoginResponse
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded

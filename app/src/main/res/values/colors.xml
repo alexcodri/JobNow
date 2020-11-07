@@ -13,5 +13,14 @@
     <color name="transparent">#00ffffff</color>
     <color name="black_loading_screen">#1c1c1c</color>
     <color name="red_ryke_accent">#e74c3c</color>
-
+    <color name="tv_job_skills_color">#64AA34</color>
+    <color name="textBlackColor">#000000</color>
+    <color name="textWhiteColor">#FFFFFF</color>
+    <color name="backgroundDarkGray">#686868</color>
+    <color name="lightGray">#888888</color>
+    <color name="darkGray">#B0B0B0</color>
+    <color name="red">#B22222</color>
+    <color name="job_description_blue">#492CB3</color>
+    <color name="dirty_white">#D0D0D0</color>
+    <color name="moderate_blue">#6699cc</color>
 </resources>
