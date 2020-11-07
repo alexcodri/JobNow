@@ -20,7 +20,7 @@
     <color name="lightGray">#888888</color>
     <color name="darkGray">#B0B0B0</color>
     <color name="red">#B22222</color>
-    <color name="job_description_blue">#492CB3</color>
+    <color name="job_description_blue">#6300ff</color>
     <color name="dirty_white">#D0D0D0</color>
     <color name="moderate_blue">#6699cc</color>
 </resources>

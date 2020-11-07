@@ -89,6 +89,7 @@ class RegisterFragment : Fragment() {
             sharedPref?.edit {
                 putBoolean("isLoggedIn", registerResponse.isUniqueUser)
                 putBoolean("isRecruiter", registerResponse.isRecruiter)
+                putString("userId", registerResponse.userId)
                 apply()
             }
             findNavController().navigate(R.id.dashboardFragment)

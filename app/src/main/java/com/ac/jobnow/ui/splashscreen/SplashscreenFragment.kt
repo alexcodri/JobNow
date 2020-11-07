@@ -76,6 +76,7 @@ class SplashscreenFragment : Fragment() {
             } else {
                 navigateToLogin()
             }
+            //navigateToLogin()
         }
     }
 

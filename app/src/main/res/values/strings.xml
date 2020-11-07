@@ -16,4 +16,29 @@
     <string name="current_position">Current position</string>
     <string name="add_skills">Add skills</string>
     <string name="company">Company</string>
+
+    <string name="job_position_placeholder">Job position</string>
+    <string name="job_posting_location_placeholder">Office No:</string>
+    <string name="job_posting_date">Date Posted :-</string>
+    <string name="job_description_placeholder">Job description placeholder Job description placeholderJob description placeholderJob description placeholderJob description placeholderJob description placeholder</string>
+    <string name="apply_now">Apply Now</string>
+
+    <string name="john_doe">John Doe</string>
+    <string name="position">Position</string>
+
+    <string name="saved_jobs_toolbar">All Jobs</string>
+    <string name="job_details_toolbar">Job Details</string>
+
+    <string name="placeholder_job_detail_position">Developer</string>
+    <string name="placeholder_job_detail_company">Company</string>
+    <string name="placeholder_vacancy_nb_job_detail">Vacancy - </string>
+    <string name="date_posted_job_detail_tv">Date posted :- </string>
+    <string name="designation_job_detail">Designation :- </string>
+    <string name="phone_job_detail">Phone :- </string>
+    <string name="email_job_description">Email :- </string>
+    <string name="website_job_description">Website :- </string>
+    <string name="address_job_posting">Address :- </string>
+    <string name="save_job_job_description">save this job</string>
+    <string name="job_details">Job details</string>
+    <string name="similar_jobs">similar jobs</string>
 </resources>

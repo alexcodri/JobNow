@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_job_details"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.jobDetails.JobDetailsFragment">
+
+    <include
+        android:id="@+id/toolbar_detail"
+        layout="@layout/toolbar_job_detail" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_detail"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/full_layout_job_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/job_details_top_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/job_description_blue">
+
+                <ImageView
+                    android:id="@+id/job_detail_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginTop="10sp"
+                    android:src="@drawable/ic_baseline_account_box_24" />
+
+                <TextView
+                    android:id="@+id/job_detail_position_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:layout_marginTop="30sp"
+                    android:layout_toEndOf="@id/job_detail_iv"
+                    android:text="@string/placeholder_job_detail_position"
+                    android:textColor="@color/textWhiteColor"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/job_detail_company_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/job_detail_position_tv"
+                    android:layout_marginStart="5sp"
+                    android:layout_marginTop="10sp"
+                    android:layout_toEndOf="@id/job_detail_iv"
+                    android:text="@string/placeholder_job_detail_company"
+                    android:textColor="@color/textWhiteColor"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/job_detail_posting_nb_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/job_detail_position_tv"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10sp"
+                    android:text="@string/placeholder_vacancy_nb_job_detail"
+                    android:textColor="@color/textWhiteColor"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:id="@+id/date_posted_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/job_detail_iv"
+                    android:layout_marginStart="25sp"
+                    android:layout_marginTop="15sp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/calendar_job_posting" />
+
+                    <TextView
+                        android:id="@+id/job_detail_date_posted_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_start_job_description"
+                        android:text="@string/date_posted_job_detail_tv"
+                        android:textColor="@color/textWhiteColor"
+                        android:textSize="@dimen/job_detail_tv_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/designation_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/date_posted_layout"
+                    android:layout_marginStart="25sp"
+                    android:layout_marginTop="15sp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_storage_24" />
+
+                    <TextView
+                        android:id="@+id/job_detail_designation_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_start_job_description"
+                        android:text="@string/designation_job_detail"
+                        android:textColor="@color/textWhiteColor"
+                        android:textSize="@dimen/job_detail_tv_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/phone_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/designation_layout"
+                    android:layout_marginStart="25sp"
+                    android:layout_marginTop="15sp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/phone_job_detail"
+                        android:src="@drawable/ic_baseline_local_phone_24" />
+
+                    <TextView
+                        android:id="@+id/job_detail_phone_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_start_job_description"
+                        android:text="@string/phone_job_detail"
+                        android:textColor="@color/textWhiteColor"
+                        android:textSize="@dimen/job_detail_tv_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/email_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/phone_layout"
+                    android:layout_marginStart="25sp"
+                    android:layout_marginTop="15sp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_email_24" />
+
+                    <TextView
+                        android:id="@+id/job_detail_email_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_start_job_description"
+                        android:text="@string/email_job_description"
+                        android:textColor="@color/textWhiteColor"
+                        android:textSize="@dimen/job_detail_tv_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/website_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/email_layout"
+                    android:layout_marginStart="25sp"
+                    android:layout_marginTop="15sp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_web_asset_24" />
+
+                    <TextView
+                        android:id="@+id/job_detail_website_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_start_job_description"
+                        android:text="@string/website_job_description"
+                        android:textColor="@color/textWhiteColor"
+                        android:textSize="@dimen/job_detail_tv_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/address_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/website_layout"
+                    android:layout_marginStart="25sp"
+                    android:layout_marginTop="15sp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/location_picker_job_posting" />
+
+                    <TextView
+                        android:id="@+id/job_detail_address_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_start_job_description"
+                        android:text="@string/address_job_posting"
+                        android:textColor="@color/textWhiteColor"
+                        android:textSize="@dimen/job_detail_tv_size" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/separator_line_job_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_below="@id/address_layout"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginEnd="10sp"
+                    android:background="@color/textWhiteColor" />
+
+                <LinearLayout
+                    android:id="@+id/buttons_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separator_line_job_description"
+                    android:layout_marginStart="@dimen/margin_start_job_description"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginBottom="15sp"
+                    android:orientation="horizontal">
+
+                    <com.ac.jobnow.ui.views.custom.CustomBlueButton
+                        android:id="@+id/apply_now_job_detail_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15sp"
+                        android:background="@drawable/bg_custom_btn_white_margins"
+                        android:backgroundTint="@color/jobnow_accent"
+                        android:text="@string/apply_now"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/details_similar_jobs_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/buttons_layout"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <Button
+                        android:id="@+id/job_details_btn"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/job_btn_bg_selected"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="15sp"
+                        android:text="@string/job_details"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textWhiteColor"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/similar_jobs_btn"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/job_description_blue"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="15sp"
+                        android:text="@string/similar_jobs"
+                        android:textAllCaps="true"
+                        android:textColor="@color/lightGray"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/job_details_bottom_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/job_details_top_layout"
+                android:background="@color/dirty_white">
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/job_details_bottom_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>

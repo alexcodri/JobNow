@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/applicant_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="7sp"
+    android:layout_marginTop="8sp"
+    android:layout_marginEnd="7sp"
+    android:background="@drawable/applicant_layout_bg">
+
+    <TextView
+        android:id="@+id/applicant_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11sp"
+        android:layout_marginTop="7sp"
+        android:text="@string/john_doe"
+        android:textColor="@color/textWhiteColor"
+        android:textSize="19sp" />
+
+    <TextView
+        android:id="@+id/position_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/applicant_name_tv"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="4sp"
+        android:text="@string/current_position"
+        android:textColor="@color/textWhiteColor"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/applicant_position_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/applicant_name_tv"
+        android:layout_marginStart="6sp"
+        android:layout_marginTop="3sp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginBottom="5sp"
+        android:layout_toEndOf="@id/position_et"
+        android:text="@string/position"
+        android:textColor="@color/textWhiteColor"
+        android:textSize="18sp" />
+
+
+</RelativeLayout>
