@@ -1,14 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.jobDetailItem.JobDetailItemFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/fragment_job_detail_job_description_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:background="@drawable/job_details_specifications_bg"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10sp"
+            android:text="@string/job_description"
+            android:textColor="@color/job_description_blue"
+            android:textSize="@dimen/job_detail_tv_size" />
+
+        <TextView
+            android:id="@+id/job_detail_job_description_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="7sp"
+            android:layout_marginEnd="7sp"
+            android:layout_marginBottom="10sp"
+            android:text="@string/job_description_placeholder"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_job_detail_job_skills_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_job_detail_job_description_layout"
+        android:layout_margin="7dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/job_details_specifications_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10sp"
+            android:text="@string/job_skills"
+            android:textColor="@color/job_description_blue"
+            android:textSize="@dimen/job_detail_tv_size" />
+
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/fragment_job_description_flex_box_job_skills"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:flexDirection="row"
+            app:flexWrap="wrap">
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_job_detail_job_salary_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_job_detail_job_skills_layout"
+        android:layout_margin="7dp"
+        android:background="@drawable/job_details_specifications_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10sp"
+            android:text="@string/salary"
+            android:textColor="@color/job_description_blue"
+            android:textSize="@dimen/job_detail_tv_size" />
+
+        <TextView
+            android:id="@+id/job_details_fragment_salary_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7sp"
+            android:layout_marginEnd="7sp"
+            android:layout_marginBottom="10sp"
+            android:text="@string/salary"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

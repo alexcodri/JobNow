@@ -15,7 +15,7 @@ interface JobService {
         @Field("userId") userId: String,
         @Field("jobId") jobId: String
     ): Response<ApplyResult>
-    
+
     @GET("/userJobs")
     suspend fun getJobsForUser(
         @Query("userId") userId: String

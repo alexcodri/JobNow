@@ -1,32 +1,38 @@
 package com.ac.jobnow.ui.jobDetailItem
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ac.jobnow.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ac.jobnow.databinding.FragmentSimilarJobsBinding
+import com.ac.jobnow.repository.model.jobModels.Job
+import com.ac.jobnow.ui.dashboard.DashboardFragmentDirections
+import com.ac.jobnow.ui.dashboard.adapter.DashboardApplicantAdapter
+import com.ac.jobnow.ui.jobDetails.SimilarJobsFragmentViewModel
+import com.ac.jobnow.utils.OnJobItemClick
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class SimilarJobsFragment : Fragment(), OnJobItemClick {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SimilarJobsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SimilarJobsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var similarJobsFragmentBinding: FragmentSimilarJobsBinding? = null
+    private val binding get() = similarJobsFragmentBinding!!
+    private val jobs: ArrayList<Job> = arrayListOf()
+    private val similarJobsFragmentViewModel: SimilarJobsFragmentViewModel by activityViewModels()
+    private lateinit var designation: String
+    private lateinit var vacancyNumber: String
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    companion object {
+        @JvmStatic
+        fun newInstance(designation: String, vacancyNumber: String): SimilarJobsFragment {
+            val fragment = SimilarJobsFragment()
+            val args = Bundle()
+            args.putString("designation", designation)
+            args.putString("vacancyNumber", vacancyNumber)
+            fragment.arguments = args
+            return fragment
         }
     }
 
@@ -34,27 +40,43 @@ class SimilarJobsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_similar_jobs, container, false)
+        vacancyNumber = arguments?.getString("vacancyNumber") ?: ""
+        designation = arguments?.getString("designation") ?: ""
+        similarJobsFragmentBinding = FragmentSimilarJobsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SimilarJobsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SimilarJobsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        initRecyclerViewAdapter()
+        updateDataInAdapter()
+    }
+
+    private fun initRecyclerViewAdapter() {
+        binding.fragmentSimilarJobsRecyclerView.apply {
+            adapter = DashboardApplicantAdapter(jobs, this@SimilarJobsFragment)
+            layoutManager = LinearLayoutManager(context)
+        }
+    }
+
+    private fun updateDataInAdapter() {
+        similarJobsFragmentViewModel.apply {
+            getJobs()
+            jobsResult.observe(viewLifecycleOwner, {
+                jobs.clear()
+                jobs.addAll(it.filterJobs())
+                binding.fragmentSimilarJobsRecyclerView.adapter?.notifyDataSetChanged()
+            })
+        }
+    }
+
+    private fun ArrayList<Job>.filterJobs(): List<Job> {
+        return this.filter { it.designation == designation && it.vacancyNumber != vacancyNumber }
+    }
+
+    override fun onJobClick(position: Int) {
+        val action =
+            DashboardFragmentDirections.actionDashboardFragmentToJobDetailsFragment(jobs[position])
+        findNavController().navigate(action)
     }
 }

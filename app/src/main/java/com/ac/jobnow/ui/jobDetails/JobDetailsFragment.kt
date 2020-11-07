@@ -6,13 +6,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
+import com.ac.jobnow.R
 import com.ac.jobnow.databinding.FragmentJobDetailsBinding
 import com.ac.jobnow.repository.model.applyToJobModels.ApplyRequest
 import com.ac.jobnow.repository.model.jobModels.Job
+import com.ac.jobnow.ui.jobDetailItem.JobDetailItemFragment
+import com.ac.jobnow.ui.jobDetailItem.SimilarJobsFragment
+import com.ac.jobnow.utils.extensions.getBackgroundFromDrawable
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -38,6 +44,15 @@ class JobDetailsFragment : Fragment() {
         initComponents()
         handleApply()
         shareJob()
+        initJobDetailFragment()
+        showJobDetails()
+        showSimilarJobs()
+    }
+
+    private fun initJobDetailFragment() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.job_details_bottom_fragment, JobDetailItemFragment.newInstance(job))
+            .commit()
     }
 
     private fun handleApply() {
@@ -104,5 +119,82 @@ class JobDetailsFragment : Fragment() {
         return "Check out this " + job.jobTitle +
                 " job at " + job.companyName +
                 ": " + job.website
+    }
+
+
+    private fun showSimilarJobs() {
+        binding.apply {
+            similarJobsBtn.setOnClickListener {
+                initSimilarJobFragment()
+                handleButtons(
+                    similarJobsBtn,
+                    activity?.applicationContext!!,
+                    R.drawable.job_btn_bg_selected,
+                    false
+                )
+                handleButtons(
+                    jobDetailsBtn,
+                    activity?.applicationContext!!,
+                    R.drawable.job_btn_bg_unselected,
+                    true
+                )
+            }
+        }
+    }
+
+    private fun initSimilarJobFragment() {
+        parentFragmentManager.beginTransaction()
+            .replace(
+                R.id.job_details_bottom_fragment,
+                SimilarJobsFragment.newInstance(job.designation, job.vacancyNumber)
+            )
+            .commit()
+    }
+
+
+    private fun showJobDetails() {
+        binding.apply {
+            jobDetailsBtn.setOnClickListener {
+                initJobDetailFragment()
+                handleButtons(
+                    jobDetailsBtn,
+                    activity?.applicationContext!!,
+                    R.drawable.job_btn_bg_selected,
+                    false
+                )
+                handleButtons(
+                    similarJobsBtn,
+                    activity?.applicationContext!!,
+                    R.drawable.job_btn_bg_unselected,
+                    true
+                )
+
+            }
+        }
+    }
+
+    private fun handleButtons(
+        buttonToBeChanged: Button,
+        context: Context,
+        resourceId: Int,
+        isEnabled: Boolean
+    ) {
+        buttonToBeChanged.background = getBackgroundFromDrawable(context, resourceId)
+        buttonToBeChanged.isEnabled = isEnabled
+        when (isEnabled) {
+            true -> buttonToBeChanged.setTextColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.lightGray
+                )
+            )
+            false -> buttonToBeChanged.setTextColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.textWhiteColor
+                )
+            )
+        }
+        buttonToBeChanged.invalidate()
     }
 }
