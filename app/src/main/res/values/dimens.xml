@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="position_title_et_size">25sp</dimen>
+    <dimen name="button_top_margin">25sp</dimen>
+    <dimen name="standard_button_size">18sp</dimen>
+    <dimen name="first_fragment_button_margin_top">60sp</dimen>
+    <dimen name="first_fragment_padding_left_right">15sp</dimen>
+    <dimen name="first_fragment_et_text_size">25sp</dimen>
+    <dimen name="second_fragment_button_top_margin">60sp</dimen>
+    <dimen name="back_button_margin_end">10sp</dimen>
+    <dimen name="back_button_margin_bottom">10sp</dimen>
+    <dimen name="main_activity_separator_line">150sp</dimen>
+    <dimen name="activity_main_et_height">40sp</dimen>
+    <dimen name="picasso_button_margin_top">40sp</dimen>
+    <dimen name="login_tv_text_size">20sp</dimen>
+    <dimen name="login_button_text_size">20sp</dimen>
+    <dimen name="job_detail_tv_size">18sp</dimen>
+    <dimen name="margin_start_job_description">7sp</dimen>
+
+</resources>

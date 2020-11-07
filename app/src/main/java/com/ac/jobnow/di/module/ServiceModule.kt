@@ -1,6 +1,7 @@
 package com.ac.jobnow.di.module
 
 import com.ac.jobnow.repository.network.ServiceBuilder
+import com.ac.jobnow.repository.network.requests.JobService
 import com.ac.jobnow.repository.network.requests.LoginService
 import com.ac.jobnow.repository.network.requests.RegisterService
 import dagger.Module
@@ -22,4 +23,9 @@ object ServiceModule {
     @Singleton
     fun provideUserRegisterService(builder: ServiceBuilder): RegisterService =
         builder.buildService(RegisterService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideGetJobsService(builder: ServiceBuilder): JobService =
+        builder.buildService(JobService::class.java)
 }

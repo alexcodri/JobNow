@@ -46,5 +46,18 @@
         android:id="@+id/dashboardFragment"
         android:name="com.ac.jobnow.ui.dashboard.DashboardFragment"
         android:label="dashboard_fragment"
-        tools:layout="@layout/dashboard_fragment" />
+        tools:layout="@layout/dashboard_fragment">
+        <action
+            android:id="@+id/action_dashboardFragment_to_jobDetailsFragment"
+            app:destination="@id/jobDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobDetailsFragment"
+        android:name="com.ac.jobnow.ui.jobDetails.JobDetailsFragment"
+        android:label="fragment_job_details"
+        tools:layout="@layout/fragment_job_details">
+        <argument
+            android:name="job"
+            app:argType="com.ac.jobnow.repository.model.jobModels.Job" />
+    </fragment>
 </navigation>

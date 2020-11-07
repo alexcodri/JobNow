@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/job_posting_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10sp"
+    android:layout_marginTop="7sp"
+    android:layout_marginEnd="10sp"
+    android:layout_marginBottom="7sp"
+    android:background="@drawable/bg_custom_btn">
+
+    <TextView
+        android:id="@+id/job_listing_job_position_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5sp"
+        android:layout_marginTop="15sp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="@string/job_position_placeholder"
+        android:textColor="@color/job_description_blue"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/location_picker_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/job_listing_job_position_tv"
+        android:layout_marginStart="3sp"
+        android:layout_marginTop="17sp"
+        android:src="@drawable/location_picker_job_posting" />
+
+    <TextView
+        android:id="@+id/job_listing_job_location_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/job_listing_job_position_tv"
+        android:layout_marginStart="5sp"
+        android:layout_marginTop="17sp"
+        android:layout_toEndOf="@id/location_picker_iv"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="@string/job_posting_location_placeholder"
+        android:textColor="@color/lightGray"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/calendar_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/location_picker_iv"
+        android:layout_marginStart="3sp"
+        android:layout_marginTop="16sp"
+        android:src="@drawable/calendar_job_posting" />
+
+    <TextView
+        android:id="@+id/job_listing_date_posted_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/location_picker_iv"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@id/calendar_iv"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="@string/job_posting_date"
+        android:textColor="@color/lightGray"
+        android:textSize="18sp" />
+
+    <View
+        android:id="@+id/separator_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/calendar_iv"
+        android:layout_marginStart="5sp"
+        android:layout_marginTop="15sp"
+        android:layout_marginEnd="5sp"
+        android:background="@color/lightGray" />
+
+    <TextView
+        android:id="@+id/job_listing_job_description_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/separator_line"
+        android:layout_marginStart="7sp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="7sp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="@string/job_description_placeholder"
+        android:textColor="@color/textBlackColor"
+        android:textSize="16sp" />
+
+    <com.ac.jobnow.ui.views.custom.CustomBlueButton
+        android:id="@+id/job_listing_apply_now_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/job_listing_job_description_tv"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15sp"
+        android:layout_marginBottom="10sp"
+        android:backgroundTint="@color/jobnow_accent"
+        android:paddingBottom="2sp"
+        android:text="@string/apply_now"
+        android:textAllCaps="false"
+        android:textColor="@color/textWhiteColor"
+        android:textSize="20sp" />
+</RelativeLayout>

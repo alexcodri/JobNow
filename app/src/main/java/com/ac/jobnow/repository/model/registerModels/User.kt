@@ -1,5 +1,9 @@
 package com.ac.jobnow.repository.model.registerModels
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class User(
     val email: String,
     val password: String,
@@ -9,4 +13,4 @@ data class User(
     val company: String,
     val skills: List<String>,
     val isRecruiter: Boolean
-)
+) : Parcelable

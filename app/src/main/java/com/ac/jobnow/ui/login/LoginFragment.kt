@@ -230,6 +230,7 @@ class LoginFragment : Fragment() {
                         sharedPref?.edit {
                             putBoolean("isLoggedIn", it.isUserFound)
                             putBoolean("isRecruiter", it.isUserRecruiter)
+                            putString("userId", it.userId)
                             apply()
                         }
                         findNavController().navigate(R.id.dashboardFragment)
